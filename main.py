@@ -43,12 +43,29 @@ def initialize():
         math_topics.append(row[1])
       elif row[0] == 'energy': 
         energy_topics.append(row[1])
+  global topics
+  topics = bio_topics + chem_topics + physics_topics + es_topics + math_topics + energy_topics
 
 initialize()
-topics = bio_topics + chem_topics + physics_topics + es_topics + math_topics + energy_topics
+
 
 def random_topic(subject):
-  return subject[randrange(len(subject))]
+  chosen_topic = subject[randrange(len(subject))]
+  return chosen_topic
+
+def random_question_type():
+  random_int = randrange(2)
+  if random_int == 0:
+    return "Multiple Choice"
+  else: 
+    return "Short Answer"
+
+def short_answer_type():
+  random_int = randrange(2)
+  if random_int == 0:
+    return "123 type"
+  else: 
+    return "Non-123 type"
 
 def identify_subject(subject):
   if subject in ('biology','bio', 'b', 'Biology', 'Bio', 'B'): 
@@ -95,42 +112,91 @@ async def showtopic(ctx):
 
 @client.command(aliases=['rt', 'random'])
 async def randomtopic(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):  
-    await ctx.send(random_topic(topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()  
+      await ctx.send(random_topic(topics) + ", " + temp + temp2)
 
 @client.command(aliases=['rb'])
 async def randombio(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):  
-    await ctx.send(random_topic(bio_topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()
+      await ctx.send(random_topic(bio_topics) + ", " + temp + temp2)
 
 @client.command(aliases=['rc'])
 async def randomchem(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):
-    await ctx.send(random_topic(chem_topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()
+      await ctx.send(random_topic(chem_topics) + ", " + temp + temp2)
 
 @client.command(aliases=['rp'])
 async def randomphysics(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):
-    await ctx.send(random_topic(physics_topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type() 
+      await ctx.send(random_topic(physics_topics) + ", " + temp + temp2)
 
 @client.command(aliases=['res'])
 async def randomearth(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):
-    await ctx.send(random_topic(es_topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()
+      await ctx.send(random_topic(es_topics) + ", " + temp +  temp2)
 
 @client.command(aliases=['rm'])
 async def randommath(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):  
-    await ctx.send(random_topic(math_topics))    
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()  
+      await ctx.send(random_topic(math_topics) + ", " + temp + temp2)
 
 @client.command(aliases=['re'])
 async def randomenergy(ctx, amount: typing.Optional[int] = 1):
-  for x in range(amount):  
-    await ctx.send(random_topic(energy_topics))
+  if amount >=10:
+    await ctx.send("STOP TROLLING!")
+  else:
+    for x in range(amount):  
+      temp = random_question_type()
+      temp2 = ""
+      if temp == "Short Answer":
+        temp2 = ", " + short_answer_type()  
+      await ctx.send(random_topic(energy_topics) + ", " + temp + temp2)
 
 @client.command(aliases=['h'])
 async def needhelp(ctx):
-  await ctx.send('This is Topic Bot, where random scibowl topics can be produced.\nTheses are the commands:\n.topics - Lists all current topics\n.rb - random biology topic\n.rc - random chemistry topic\n.res - random earth science topic\n.rm - random math topic\n.re - random energy topic\n.rp - random physics topic\n.addtopic \"subject\" \"topic\" - adds a topic to the subject')
+  await ctx.send('This is Topic Bot, where random scibowl topics can be produced.\nTheses are the commands:\n.topics - Lists all current topics\nFor commands below, add an number afterwards for the number of topics you want.\n.rb - random biology topic\n.rc - random chemistry topic\n.res - random earth science topic\n.rm - random math topic\n.re - random energy topic\n.rp - random physics topic\n.addtopic subject topic - adds a topic to the subject\n^^ subjects are: b, c, e, es, p, m for bio, chem, energy, earth science, physics, and math')
 
 keep_alive.keep_alive()
 client.run(os.getenv("TOKEN"))
