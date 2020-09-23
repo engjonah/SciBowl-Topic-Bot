@@ -84,6 +84,8 @@ def identify_subject(subject):
     subject = 'error'
   return subject
 
+troll_message = "stahp it."
+
 client = commands.Bot(command_prefix = '.')
 
 @client.event
@@ -113,7 +115,7 @@ async def showtopic(ctx):
 @client.command(aliases=['rt', 'random'])
 async def randomtopic(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):
       temp = random_question_type()
@@ -125,7 +127,7 @@ async def randomtopic(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['rb'])
 async def randombio(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
@@ -137,7 +139,7 @@ async def randombio(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['rc'])
 async def randomchem(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
@@ -149,7 +151,7 @@ async def randomchem(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['rp'])
 async def randomphysics(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
@@ -161,7 +163,7 @@ async def randomphysics(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['res'])
 async def randomearth(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
@@ -173,7 +175,7 @@ async def randomearth(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['rm'])
 async def randommath(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
@@ -185,7 +187,7 @@ async def randommath(ctx, amount: typing.Optional[int] = 1):
 @client.command(aliases=['re'])
 async def randomenergy(ctx, amount: typing.Optional[int] = 1):
   if amount >=10:
-    await ctx.send("STOP TROLLING!")
+    await ctx.send(troll_message)
   else:
     for x in range(amount):  
       temp = random_question_type()
